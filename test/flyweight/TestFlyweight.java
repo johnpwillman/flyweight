@@ -1,6 +1,7 @@
 package flyweight;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -9,15 +10,19 @@ public class TestFlyweight {
 	@Test
 	public void test() {
 		
-		FlyweightCharacterFactory fcf = new FlyweightCharacterFactory();
+		FlyweightCharacterFactory fcf = FlyweightCharacterFactory.instance();
 		
-		Character firstChar, secondChar;
+		AbsCharacter firstChar, secondChar;
 
-		firstChar = fcf.getChar('a');
+		firstChar = fcf.getFlyweight('a');
 		
-		wait(10);
+		try {
+			wait(10);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
-		secondChar = fcf.getChar('a');
+		secondChar = fcf.getFlyweight('a');
 		
 		assertTrue(
 				"Chars should be the same",

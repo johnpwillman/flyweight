@@ -2,7 +2,7 @@ package flyweight;
 
 import java.util.Calendar;
 
-public class ConcreteCharacter extends Character {
+public class ConcreteCharacter extends AbsCharacter {
 	
 	private long createTime;
 	private char codePoint;
