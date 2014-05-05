@@ -8,7 +8,7 @@ import org.junit.Test;
 public class TestFlyweight {
 
 	@Test
-	public void test() {
+	public void testCharacterFlyweight() {
 		
 		FlyweightCharacterFactory fcf = FlyweightCharacterFactory.instance();
 		
@@ -26,7 +26,7 @@ public class TestFlyweight {
 		
 		assertTrue(
 				"Chars should be the same",
-				firstChar.getCreateTimeInMillis() == secondChar.getCreateTimeInMillis()
+				firstChar.equals(secondChar)
 				);
 		
 		fail("Not yet implemented");

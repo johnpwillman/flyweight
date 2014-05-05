@@ -21,5 +21,10 @@ public class ConcreteCharacter extends AbsCharacter {
 	public long getCreateTimeInMillis() {
 		return createTime;
 	}
+	
+	@Override
+	public boolean equals(AbsCharacter charToCompare) {
+		return this.createTime == charToCompare.getCreateTimeInMillis();
+	}
 
 }
