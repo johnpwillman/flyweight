@@ -13,7 +13,7 @@ public class ConcreteCharacter extends AbsCharacter {
 	}
 
 	@Override
-	public char getChar(Font extrinsicFont) {
+	public char getChar() {
 		return codePoint;
 	}
 
