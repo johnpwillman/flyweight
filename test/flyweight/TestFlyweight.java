@@ -3,6 +3,7 @@ package flyweight;
 import static org.junit.Assert.assertTrue;
 
 import java.awt.Font;
+import java.util.Random;
 
 import org.junit.Test;
 
@@ -54,6 +55,51 @@ public class TestFlyweight {
 				"Fonts should not be the same",
 				!firstFont.equals(secondFont)
 				);
+	}
+	
+	@Test
+	public void testRunArray() {
+		RunArray ra = new RunArray();
+		
+		FlyweightFontFactory fff = FlyweightFontFactory.instance();
+		
+		Font firstFont, secondFont;
+
+		firstFont = fff.getFlyweight("Times New Roman", Font.BOLD, 12);
+		secondFont = fff.getFlyweight("Times New Roman", Font.ITALIC, 12);
+
+		ra.addRun(0, 250, firstFont);
+		ra.addRun(250, 10, secondFont);
+		
+		ra.appendRun(320, firstFont);
+		
+		Random r = new Random();
+		int randomRun;
+		
+		randomRun = Math.abs(r.nextInt() % 250);
+		System.out.println(randomRun);
+		
+		assertTrue(
+				"Font at " + randomRun + " should be firstFont",
+				ra.elementAt(randomRun).equals(firstFont)
+				);
+		
+		randomRun = Math.abs(r.nextInt() % 10) + 250;
+		System.out.println(randomRun);
+		
+		assertTrue(
+				"Font at " + randomRun + " should be secondFont",
+				ra.elementAt(randomRun).equals(secondFont)
+				);
+		
+		randomRun = Math.abs(r.nextInt() % 320) + 260;
+		System.out.println(randomRun);
+		
+		assertTrue(
+				"Font at " + randomRun + " should be firstFont",
+				ra.elementAt(randomRun).equals(firstFont)
+				);
+		
 	}
 
 }
