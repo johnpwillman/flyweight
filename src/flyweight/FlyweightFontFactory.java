@@ -7,7 +7,9 @@ public class FlyweightFontFactory {
 	
 	private Hashtable<String, Font> fonts;
 	
-	private FlyweightFontFactory() {}
+	private FlyweightFontFactory() {
+		fonts = new Hashtable<String, Font>();
+	}
 	
 	private static class SingletonHolder {
 		private final static FlyweightFontFactory INSTANCE = new FlyweightFontFactory();

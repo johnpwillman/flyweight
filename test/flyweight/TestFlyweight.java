@@ -13,21 +13,22 @@ public class TestFlyweight {
 		
 		FlyweightCharacterFactory fcf = FlyweightCharacterFactory.instance();
 		
-		AbsCharacter firstChar, secondChar;
+		AbsCharacter firstChar, secondChar, thirdChar;
 
 		firstChar = fcf.getFlyweight('a');
 		
-		try {
-			wait(10);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		secondChar = fcf.getFlyweight('j');
 		
-		secondChar = fcf.getFlyweight('a');
+		thirdChar = fcf.getFlyweight('a');
 		
 		assertTrue(
 				"Chars should be the same",
-				firstChar.equals(secondChar)
+				firstChar.equals(thirdChar)
+				);
+		
+		assertTrue(
+				"Chars should not be the same",
+				!firstChar.equals(secondChar)
 				);
 	}
 
@@ -36,21 +37,22 @@ public class TestFlyweight {
 		
 		FlyweightFontFactory fff = FlyweightFontFactory.instance();
 		
-		Font firstFont, secondFont;
+		Font firstFont, secondFont, thirdFont;
 
 		firstFont = fff.getFlyweight("Times New Roman", Font.BOLD, 12);
 		
-		try {
-			wait(10);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		secondFont = fff.getFlyweight("Times New Roman", Font.ITALIC, 12);
 		
-		secondFont = fff.getFlyweight("Times New Roman", Font.BOLD, 12);
+		thirdFont = fff.getFlyweight("Times New Roman", Font.BOLD, 12);
 		
 		assertTrue(
 				"Fonts should be the same",
-				firstFont.equals(secondFont)
+				firstFont.equals(thirdFont)
+				);
+		
+		assertTrue(
+				"Fonts should not be the same",
+				!firstFont.equals(secondFont)
 				);
 	}
 

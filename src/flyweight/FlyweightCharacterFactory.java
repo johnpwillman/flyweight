@@ -6,7 +6,9 @@ public class FlyweightCharacterFactory {
 	
 	private Hashtable<Character, AbsCharacter> characters;
 	
-	private FlyweightCharacterFactory() {}
+	private FlyweightCharacterFactory() {
+		characters = new Hashtable<Character, AbsCharacter>();
+	}
 	
 	private static class SingletonHolder {
 		private final static FlyweightCharacterFactory INSTANCE = new FlyweightCharacterFactory();
@@ -18,7 +20,7 @@ public class FlyweightCharacterFactory {
 	
 	public AbsCharacter getFlyweight(char charToRetrieve) {
 		
-		if (!characters.contains(charToRetrieve)) {
+		if (!characters.containsKey(charToRetrieve)) {
 			characters.put(charToRetrieve, new ConcreteCharacter(charToRetrieve));
 		}
 		
